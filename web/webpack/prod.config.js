@@ -20,7 +20,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"',
-                API_URL: '"/api"'
+                API_URL: process.env.API_URL
             },
             __DEVELOPMENT__: false
         }),

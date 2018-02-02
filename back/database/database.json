@@ -57,5 +57,13 @@
         "database": "skillztests",
         "multipleStatements": true
     },
+    "kubernetes": {
+        "driver": "mysql",
+        "user": {"ENV": "RDS_USER"},
+        "password": {"ENV": "RDS_PASSWORD"},
+        "host": {"ENV": "RDS_HOST"},
+        "database": {"ENV": "RDS_DATABASE"},
+        "multipleStatements": true
+    },
     "sql-file": true
 }

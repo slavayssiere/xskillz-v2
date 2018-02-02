@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-svc
+  namespace: skillz
+  labels:
+    app: skillz
+spec:
+  ports:
+    - port: 80
+      nodePort: 32001
+  selector:
+    app: skillz
+    tier: front
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: skillz-front-deployment
+  namespace: skillz
+  labels:
+    app: skillz
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: skillz
+        tier: front
+    spec:
+      containers:
+      - image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.4
+        name: skillz-front
+        env:
+        - name: API_URL
+          value: "'http://35.189.208.150:32000'"
+        - name: PORT
+          value: "80"
+        - name: NODE_ENV
+          value: production
+        ports:
+        - containerPort: 80
+          name: skillz-front 
+

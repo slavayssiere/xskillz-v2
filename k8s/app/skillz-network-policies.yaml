@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: skillz
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: access-bdd
+  namespace: skillz
+spec:
+  podSelector:
+    matchLabels:
+      app: skillz-db-mysql
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: skillz
+          tier: back
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: access-back
+  namespace: skillz
+spec:
+  podSelector:
+    matchLabels:
+      app: skillz
+      tier: back
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: skillz
+          tier: front
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: front-allow-external
+  namespace: skillz
+spec:
+  podSelector:
+    matchLabels:
+      app: skillz
+      tier: front
+  ingress:
+  - from: []

@@ -1,8 +1,10 @@
 #! /bin/bash
 set -e
 
-npm i
+echo "DB migrate..."
+node_modules/db-migrate/bin/db-migrate up --env kubernetes
+echo "DB migrated"
 
-node_modules/db-migrate/bin/db-migrate up --env container
-
-exec node_modules/pm2/bin/pm2 start configuration.json --env container --no-daemon
+echo "PM2 start..."
+npm start
+echo "PM2 started"

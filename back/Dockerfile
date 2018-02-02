@@ -11,19 +11,19 @@ WORKDIR /skills
 
 EXPOSE 8080
 
-COPY bootstrap.sh bootstrap.sh
+# Install dependencies from package.json
+COPY package.json package.json
+RUN npm install
+
 
 COPY database/migrations migrations
 COPY database/database.json database.json
 
-# COPY node_modules node_modules
 COPY configuration.json configuration.json
 COPY src src
-COPY package.json package.json
 
 # RUN npm remove bcrypt
 
-# Install dependencies from package.json
-# RUN npm install
+COPY bootstrap.sh bootstrap.sh
 
 ENTRYPOINT ["/skills/bootstrap.sh"]

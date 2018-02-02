@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/index.js",
     "scripts": {
-        "start": "pm2 start configuration.json",
+        "start": "node src/index.js",
         "dev": "RDS_USER=skillz RDS_PASSWORD=skillz RDS_DATABASE=skillz RDS_HOST=localhost NODE_ENV=development ./node_modules/nodemon/bin/nodemon.js src/index.js",
         "lint": "eslint src tests",
         "migration:new": "db-migrate create --config database/database.json --migrations-dir database/migrations",
