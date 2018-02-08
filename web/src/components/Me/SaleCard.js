@@ -91,7 +91,17 @@ class SaleCard extends Component {
                         <div className="row">
                             <div>
                                 <p>Compétences</p>
-                                <ul className="row-content"/>
+                                <ul className="row-content">{
+                                    _(user.domains)
+                                        .map(d => d.skills)
+                                        .flatten()
+                                        .filter(s => s)
+                                        .orderBy(['name'], ['asc'])
+                                        .slice(0, 5)
+                                        .map(s => <li key={s.name}>{s.name} ({s.level}/3)</li>)
+                                        .value()
+                                }
+                                </ul>
                             </div>
                             <div>
                                 <p>Souhaits</p>

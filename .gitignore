@@ -6,3 +6,6 @@ npm-debug.log
 sqlfiles
 mysql/
 *.iml
+back/database/migrations/20180201160000-adminwescale.js
+back/database/migrations/sqls/20180201160000-adminwescale-down.sql
+back/database/migrations/sqls/20180201160000-adminwescale-up.sql
