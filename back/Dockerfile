@@ -3,7 +3,7 @@ FROM node:6.2
 MAINTAINER Jean-Louis Rigau <jlrigau@xebia.fr>
 
 RUN apt-get update
-RUN apt-get install bcrypt node-gyp -y
+RUN apt-get install bcrypt node-gyp netcat -y
 
 RUN mkdir /skills
 

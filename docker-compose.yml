@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
   db:
@@ -12,34 +12,26 @@ services:
       - 3306:3306
     networks:
       - backend
-    volumes:
-      - /opt/skillz/data:/var/lib/mysql
-
-  db_tests:
-      image: mysql:5.7
-      environment:
-        - MYSQL_ROOT_PASSWORD=admin
-        - MYSQL_DATABASE=skillz
-        - MYSQL_USER=skillz
-        - MYSQL_PASSWORD=skillz
-      ports:
-        - 3307:3306
-      networks:
-        - backend
 
   back:
-    build: ./back
-    image: xebiafrance/skillz-back
+    image: eu.gcr.io/wescale-site/xebiafrance/skillz-back:0.0.8
     depends_on:
+      - db
+    links:
       - db
     ports:
       - 8080:8080
     networks:
       - backend
+    environment:
+        - RDS_HOST=db
+        - RDS_USER=skillz 
+        - RDS_PORT="3306"
+        - RDS_DATABASE=skillz 
+        - RDS_PASSWORD=skillz
 
   web:
-    build: ./web
-    image: xebiafrance/skillz-web
+    image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.8
     links:
        - back
     depends_on:
@@ -48,6 +40,10 @@ services:
       - 80:80
     networks:
       - backend
+    environment:
+      - API_URL="'http://localhost:8080'"
+      - PORT=80
+      - NODE_ENV=production
 
 networks:
   backend:
