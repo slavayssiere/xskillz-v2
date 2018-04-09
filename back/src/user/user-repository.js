@@ -148,11 +148,10 @@ const UserRepository = {
         .then((hash) => {
             user.password = hash;
         })
-        .then(() =>
-            Database.query(`
-                    INSERT INTO User (name, email, password)
-                    VALUES ('${user.name}','${user.email}', '${user.password}')
-            `)),
+        .then(() => {
+            Database.query(`INSERT INTO User (name, email, password) VALUES ('${user.name}','${user.email}', '${user.password}')`)
+            Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, 2)`)
+        }),
 
     deleteUserById: (id) =>
         Database
@@ -217,9 +216,17 @@ const UserRepository = {
             UPDATE User SET manager_id = ${managerId} WHERE id = ${userId}
         `),
 
-    addRole: (user, roleName) =>
-        Database.query(`SELECT DISTINCT id FROM Role WHERE name = '${roleName}'`)
-        .then((roles) => Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, ${roles[0].id})`)),
+    addRole: (user, roleName) => {
+        if(roleName==='Manager'){
+            Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, 1)`)
+            Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, 4)`)
+            Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, 6)`)
+        }
+        else {
+            Database.query(`SELECT DISTINCT id FROM Role WHERE name = '${roleName}'`)
+            .then((roles) => Database.query(`INSERT INTO UserRole(user_id,roles_id) VALUES (${user.id}, ${roles[0].id})`))
+        }
+    },
 
     addToken: (user, token) =>
         Database.query(`

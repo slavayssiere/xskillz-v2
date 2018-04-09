@@ -15,17 +15,17 @@ export class HelpPage extends Component {
                 <Paper style={style}>
                     <h3>Qu'est-ce qu'une compétence ?</h3>
                     <p style={{marginTop}}>
-                        Une compétence représente un savoir, il peut être professionnel, lié à un outil, à une
-                        connaissance ... Les utilisateurs peuvent ajouter n'importe qu'elle compétence. Une fois
-                        enregistrée, elle fera partie de la liste proposée aux autres utilisateurs.
+                        Une compétence représente un savoir, il peut être lié à un outil, à une méthode ou un outil.<br />
+                        Les utilisateurs peuvent ajouter n'importe qu'elle compétence. Une fois enregistrée, elle fera partie de la liste proposée aux autres utilisateurs.<br />
+						/!\ SVP Evitez de créer des compétences globales à un domaine d’expertise ( Big Data, IA, Sécurité, BDD, TMC, etc…), préférer nommer la technologie ou la méthode (ex : Redshift, AWS DynamoDB, Apache JMeter, etc…).
                     </p>
                 </Paper>
 
                 <Paper style={style}>
                     <h3>Qu'est-ce qu'un domaine ?</h3>
                     <p style={{marginTop}}>
-                        Un domaine est un ensemble de compétences. Les utilisateurs qui ont le rôle "manageur"
-                        peuvent ajouter ou supprimer les domaines.
+                        Un domaine est un ensemble de compétences. 
+						Seul l'administrateur peux ajouter/supprimer les domaines.<br />Il a également la charge de fusionner des compétences en doublon.
                     </p>
                 </Paper>
 
@@ -34,8 +34,7 @@ export class HelpPage extends Component {
                     <p style={{marginTop}}>
                         Une carte de compétence s'éclaircie lorsqu'elle ne possède pas le petit <span
                         className="interested-icon" style={{color: redA400}}>&#9829;</span>. Ainsi, les compétences
-                        qui
-                        intéressent le profil consulté sont mises en avant.
+                        qui intéressent le profil consulté sont mises en avant.
                     </p>
                 </Paper>
 
@@ -43,12 +42,10 @@ export class HelpPage extends Component {
                     <h3>Que représentent les <Stars level={1}/> ?</h3>
                     <p style={{marginTop}}>
                         Pour chaque compétence, l'utilisateur est invité à estimer son niveau de connaissance.
-                        Chaque
-                        entreprise possède sa propre échelle de valeur.
-                        Nous pensons qu'une échelle de 0 à 3 est suffisante.
+                        <br />Chaque entreprise possède sa propre échelle de valeur. Nous pensons qu'une échelle de 0 à 3 est suffisante.
                     </p>
                     <p style={{marginTop}}>
-                        Voici l'échelle que nous avons définie chez Xebia :
+                        Voici l'échelle que nous avons définie chez WeScale :
                     </p>
                     <table>
                         <tbody>
@@ -56,32 +53,32 @@ export class HelpPage extends Component {
                             <td>
                                 <Stars level={0}/></td>
                             <td>
-                                Sans expérience mais intéressé(e) par les sujets qui toucheraient à cette
-                                compétence.
+                                <b>Sans expérience :</b> mais intéressé(e) par les sujets qui touchent à cette compétence.
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <Stars level={1}/></td>
                             <td>
-                                Un(e) débutant(e) qui utilise cette compétence sur un projet personnel ou a
-                                assisté/préparé un XKE, .
+                                <b>Débutant(e) :</b> j’ai pratiqué cette compétence sur un projet personnel ou professionnel, mais j’ai encore des choses à apprendre pour la maîtriser.
+
+.
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <Stars level={2}/></td>
                             <td>
-                                Un(e) confirmé(e) qui a pratiqué cette compétence sur un ancien projet.
+                               <b>Confirmé(e) :</b> j’ai pratiqué cette compétence sur un ou plusieurs projets en <b>Production</b>.
+
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <Stars level={3}/></td>
                             <td>
-                                Un(e) expert(e) qui met en pratique ou a mis en pratique quasi
-                                quotidiennement cette
-                                compétence. A fait des audits, des études de performances...
+                                <b>Expert(e) :</b>  Cette compétence n’a pas de secret pour moi et j’en ai fait l'expérience en  <b>Production</b>.<br />Je suis apte à réaliser des <b>audits, des études de performances et à transmettre mes retours d’expérience à nos clients</b>.
+
                             </td>
                         </tr>
                         <tr>
@@ -89,7 +86,7 @@ export class HelpPage extends Component {
                                 <span
                                     className="interested-icon" style={{color: redA400}}>&#9829;</span></td>
                             <td>
-                                Je veux en faire dans ma prochaine mission
+                                <b>J’aimerais</b> utiliser cette compétence dans une prochaine mission (indépendant du nombre d'étoiles).
                             </td>
                         </tr>
                         </tbody>

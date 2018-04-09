@@ -14,7 +14,7 @@ services:
       - backend
 
   back:
-    image: eu.gcr.io/wescale-site/xebiafrance/skillz-back:0.0.8
+    image: eu.gcr.io/wescale-site/xebiafrance/skillz-back:0.0.14
     depends_on:
       - db
     links:
@@ -26,12 +26,12 @@ services:
     environment:
         - RDS_HOST=db
         - RDS_USER=skillz 
-        - RDS_PORT="3306"
+        - RDS_PORT=3306
         - RDS_DATABASE=skillz 
         - RDS_PASSWORD=skillz
 
   web:
-    image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.8
+    image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.11
     links:
        - back
     depends_on:
@@ -41,7 +41,7 @@ services:
     networks:
       - backend
     environment:
-      - API_URL="'http://localhost:8080'"
+      - API_URL="http://localhost:8080"
       - PORT=80
       - NODE_ENV=production
 
