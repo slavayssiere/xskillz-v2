@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: skillz-ingress
+  namespace: skillz
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/*
+        backend:
+          serviceName: back-svc
+          servicePort: 8080
+      - path: /api
+        backend:
+          serviceName: back-svc
+          servicePort: 8080
+      - path: /*
+        backend:
+          serviceName: front-svc
+          servicePort: 80
+      - path: /
+        backend:
+          serviceName: front-svc
+          servicePort: 80

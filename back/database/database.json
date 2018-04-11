@@ -7,30 +7,6 @@
         "database": "skillz",
         "multipleStatements": true
     },
-    "production": {
-        "driver": "mysql",
-        "user": "skillz",
-        "password": "skillz",
-        "host": "ec2-52-209-161-67.eu-west-1.compute.amazonaws.com",
-        "database": "skillz",
-        "multipleStatements": true
-    },
-    "thiga": {
-        "driver": "mysql",
-        "user": "skillz",
-        "password": "skillz",
-        "host": "ec2-54-229-205-2.eu-west-1.compute.amazonaws.com",
-        "database": "skillz",
-        "multipleStatements": true
-    },
-    "ac": {
-        "driver": "mysql",
-        "user": "skillz",
-        "password": "skillz",
-        "host": "35.156.124.207",
-        "database": "skillz",
-        "multipleStatements": true
-    },
     "dev": {
         "driver": "mysql",
         "user": "skillz",
@@ -47,14 +23,6 @@
         "host": "localhost",
         "database": "skillz",
         "port": "3307",
-        "multipleStatements": true
-    },
-    "itests": {
-        "driver": "mysql",
-        "user": "skillztests",
-        "password": "skillztests",
-        "host": "skillztests.c3fhpdl9pmsv.eu-central-1.rds.amazonaws.com",
-        "database": "skillztests",
         "multipleStatements": true
     },
     "kubernetes": {

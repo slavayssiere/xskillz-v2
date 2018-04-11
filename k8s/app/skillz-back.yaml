@@ -31,7 +31,7 @@ spec:
         tier: back
     spec:
       containers:
-      - image: eu.gcr.io/wescale-site/xebiafrance/skillz-back:0.0.5
+      - image: eu.gcr.io/wescale-site/xebiafrance/skillz-back:0.0.19
         name: skillz-back
         env:
         - name: RDS_HOST

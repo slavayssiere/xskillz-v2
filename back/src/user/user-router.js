@@ -6,28 +6,23 @@ const ROLES = require('../security').ROLES;
 
 const UserRouter = {
 
-    register: (express) => {
+    register: (router) => {
 
-        express
-            .route('/users')
-            .get(Security.require([ROLES.users]), UserController.getUsersWebVersion)
-            .post(Security.require([ROLES.manager]), UserController.addUser);
+        router
+            .get('/users', Security.require([ROLES.users]), UserController.getUsersWebVersion)
+            .post('/users', Security.require([ROLES.manager]), UserController.addUser);
 
-        express
-            .route('/users/signup')
-            .post(UserController.signupUser);
+        router.post('/users/signup', UserController.signupUser);
 
-        express
-            .route('/users/:id([0-9]+)')
-            .get(UserController.getUserById)
-            .put(Security.require([ROLES.users]), UserController.updateUser)
-            .delete(Security.require([ROLES.users]), UserController.deleteUserById);
+        router
+            .get('/users/:id([0-9]+)', UserController.getUserById)
+            .put('/users/:id([0-9]+)', Security.require([ROLES.users]), UserController.updateUser)
+            .delete('/users/:id([0-9]+)', Security.require([ROLES.users]), UserController.deleteUserById);
 
-        express
-            .route('/users/:id([\\w%\\-]+)')
-            .get(UserController.getUserByReadableId);
+        router
+            .get('/users/:id([\\w%\\-]+)', UserController.getUserByReadableId);
 
-        express
+        router
             .patch('/me', Security.requireLogin, UserController.patchMe)
             .post('/me', Security.requireLogin, UserController.getCurrentUser)
 

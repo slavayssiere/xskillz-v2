@@ -31,11 +31,11 @@ spec:
         tier: front
     spec:
       containers:
-      - image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.4
+      - image: eu.gcr.io/wescale-site/xebiafrance/skillz-front:0.0.14
         name: skillz-front
         env:
         - name: API_URL
-          value: "'http://35.189.208.150:32000'"
+          value: "'http://skillz.wescale.fr/api/v1'"
         - name: PORT
           value: "80"
         - name: NODE_ENV
