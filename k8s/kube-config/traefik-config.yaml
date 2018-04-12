@@ -17,8 +17,7 @@ data:
       email = "sebastien.Lavayssiere@wescale.fr"
       storage = "acme.json"
       entryPoint = "https"
-      caServer = "https://acme-staging.api.letsencrypt.org/directory"
-      [[acme.domains]]
-        main = "skillz.wescale.fr"
+      onDemand = false
+      OnHostRule = true
       [acme.httpChallenge]
         entryPoint = "http"

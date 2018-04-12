@@ -35,7 +35,7 @@ spec:
         name: skillz-front
         env:
         - name: API_URL
-          value: "'http://skillz.wescale.fr/api/v1'"
+          value: "'https://skillz.wescale.fr/api/v1'"
         - name: PORT
           value: "80"
         - name: NODE_ENV
