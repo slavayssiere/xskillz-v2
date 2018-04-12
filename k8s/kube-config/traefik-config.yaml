@@ -9,20 +9,16 @@ data:
     defaultEntryPoints = ["http","https"]
     [entryPoints]
       [entryPoints.http]
-      address = ":80"
-      [entryPoints.http.redirect]
-      entryPoint = "https"
-      [entryPoints.https.auth.basic]
-      users = ["traefik:$apr1$PtFks5Oo$aHz45bE4IAJ8LkE8ax1ux/"]
+        address = ":80"
       [entryPoints.https]
-      address = ":443"
-      [entryPoints.https.tls]
+        address = ":443"
+          [entryPoints.https.tls]
     [acme]
-    email = "lefevre.kevin@gmail.com"
-    storageFile = "/acme/acme.json"
-    entryPoint = "https"
-    onDemand = true
-    onHostRule = true
-    caServer = "https://acme-staging.api.letsencrypt.org/directory"
-    [[acme.domains]]
-    main = "archifleks.net"
+      email = "sebastien.Lavayssiere@wescale.fr"
+      storage = "acme.json"
+      entryPoint = "https"
+      caServer = "https://acme-staging.api.letsencrypt.org/directory"
+      [[acme.domains]]
+        main = "skillz.wescale.fr"
+      [acme.httpChallenge]
+        entryPoint = "http"

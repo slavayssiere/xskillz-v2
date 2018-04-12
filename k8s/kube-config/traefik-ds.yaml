@@ -13,6 +13,8 @@ metadata:
   labels:
     k8s-app: traefik-ingress-lb
 spec:
+  updateStrategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -26,9 +28,6 @@ spec:
       - name: config
         configMap:
           name: traefik-conf
-      - name: acme
-        hostPath:
-          path: /srv/configs/acme.json
       containers:
       - image: traefik
         name: traefik-ingress-lb
@@ -36,7 +35,7 @@ spec:
         - name: http
           containerPort: 80
           hostPort: 80
-        - name: admin
+        - name: admin-ui
           containerPort: 8080
         - name: https
           containerPort: 443
@@ -55,8 +54,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /acme/acme.json
-          name: acme
 ---
 kind: Service
 apiVersion: v1
