@@ -1,6 +1,6 @@
 FROM node:6.2
 
-MAINTAINER Jean-Louis Rigau <jlrigau@xebia.fr>
+LABEL MAINTAINER slavayssiere <sebastien.lavayssiere@wescale.fr>
 
 RUN apt-get update
 RUN apt-get install bcrypt node-gyp netcat -y

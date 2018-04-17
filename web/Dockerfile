@@ -1,6 +1,6 @@
 FROM node:6.2
 
-MAINTAINER Xebia <jsmadja@xebia.fr>
+LABEL MAINTAINER slavayssiere <sebastien.lavayssiere@wescale.fr>
 
 RUN mkdir -p /skillz
 WORKDIR /skillz
