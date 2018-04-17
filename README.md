@@ -1,3 +1,23 @@
+# Build and deploy localy
+
+change your /etc/hosts with:
+
+```
+127.0.0.1	skillz-back
+127.0.0.1	skillz-front
+```
+
+and build and deploy with:
+
+```
+./build-deploy-local.sh
+```
+
+go to http://skillz-front/ 
+
+default user: admin@skillz.fr
+default password: admin
+
 # Build
 
 ```

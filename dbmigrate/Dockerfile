@@ -15,10 +15,9 @@ EXPOSE 8080
 COPY package.json package.json
 RUN npm install
 
-COPY configuration.json configuration.json
-COPY src src
 
-# RUN npm remove bcrypt
+COPY database/migrations migrations
+COPY database/database.json database.json
 
 COPY bootstrap.sh bootstrap.sh
 

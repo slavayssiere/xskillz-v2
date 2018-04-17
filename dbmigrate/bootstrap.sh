@@ -8,6 +8,6 @@ do
 done
 sleep 1
 
-echo "Server start..."
-npm start
-echo "Server started"
+echo "DB migrate..."
+node_modules/db-migrate/bin/db-migrate up --env kubernetes
+echo "DB migrated"
